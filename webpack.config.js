@@ -49,7 +49,7 @@ var mergeCommon = merge.bind(null, {
 
 if (NODE_ENV === 'development') {
   var IP = '0.0.0.0';
-  var PORT = 3000;
+  var PORT = 4000;
   module.exports = mergeCommon({
     ip: IP,
     port: PORT,
@@ -72,7 +72,10 @@ if (NODE_ENV === 'development') {
       }),
       // new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
-      new HtmlPlugin(),
+      //需要指定Html文件名称，否则会报错
+      new HtmlPlugin({
+        filename:'index.html',
+      }),
     ],
     module: {
       preLoaders: [{
